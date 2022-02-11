@@ -1,15 +1,33 @@
 import type {NextPage} from "next";
-import Image from "next/image";
+import {GetStaticProps} from "next";
 
-import logo from "../public/logo.svg";
+import {Product} from "../product/types";
+import Header from "../components/Header";
+import ProductItem from "../components/Product";
 
-const Home: NextPage = () => {
+export const getStaticProps: GetStaticProps = async () => {
+  const products: Product[] = await import("../product/mock.json").then((res) => res.default);
+
+  return {
+    props: {
+      products,
+    },
+  };
+};
+
+interface Props {
+  products: Product[];
+}
+
+const Home: NextPage<Props> = ({products}) => {
   return (
-    <div className="h-full flex bg-black">
-      <header className="m-auto text-white text-center">
-        <Image alt="Basement" src={logo} />
-        <h4>Lets get this party started</h4>
-      </header>
+    <div className="flex flex-col">
+      <Header />
+      <div className="mt-20 flex gap-4 px-8">
+        {products.map((product) => (
+          <ProductItem key={product?.id} product={product} />
+        ))}
+      </div>
     </div>
   );
 };
