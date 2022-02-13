@@ -3,6 +3,7 @@
     "image": "/products/shirt.png",
     "price": 7.95,
     "name": "Black t-shirt",
+    "description": "Unisex Basic Softstyle T-Shirt",
     "options": [{
       "label": "size",
       "values": ["S", "M", "L", "XL"]
@@ -11,7 +12,8 @@
     "id": "black-hoodie",
     "image": "/products/hoodie.png",
     "price": 13,
-    "name": "Black hoodie",
+    "name": "Darkest hoodie",
+    "description": "Very cool hoodie",
     "options": [{
       "label": "size",
       "values": ["S", "M", "L", "XL"]
@@ -21,6 +23,7 @@
     "image": "/products/cap.png",
     "price": 23,
     "name": "Black cap",
+    "description": "No cap",
     "options": [{
       "label": "size",
       "values": ["S", "M", "L", "XL"]
