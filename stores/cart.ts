@@ -4,28 +4,30 @@ import {devtools, persist} from "zustand/middleware";
 import {Product} from "../product/types";
 
 interface CartState {
-    cart: {id: Product["id"]; quantity: number; size: string}[];
-    addProduct: (id: string) => void;
-    removeProduct: (id: string) => void;
+    cart: {product: Product; quantity: number; size: string}[];
+    addProduct: (product: Product) => void;
+    removeProduct: (product: Product) => void;
 }
 
-const useStore = create<CartState>(
+const useCart = create<CartState>(
     persist(
         devtools((set) => ({
             cart: [],
-            addProduct: (id) =>
+            addProduct: (product) =>
                 set((state) => {
-                    const isPresent = state.cart.find((product) => product.id === id);
+                    const alreadyInCart = state.cart.find((cart) => cart.product.id === product.id);
 
-                    if (!isPresent) {
+                    if (!alreadyInCart) {
                         return {
                             ...state,
-                            cart: [...state.cart, {id, quantity: 1, size: "S"}],
+                            cart: [...state.cart, {product, quantity: 1, size: "S"}],
                         };
                     }
 
-                    const updatedCart = state.cart.map((product) =>
-                        product.id === id ? {...product, quantity: product.quantity + 1} : product,
+                    const updatedCart = state.cart.map((cart) =>
+                        cart.product.id === product.id
+                            ? {...cart, quantity: cart.quantity + 1}
+                            : cart,
                     );
 
                     return {
@@ -33,23 +35,23 @@ const useStore = create<CartState>(
                         cart: updatedCart,
                     };
                 }),
-            removeProduct: (id) =>
+            removeProduct: (product) =>
                 set((state) => {
-                    const isPresent = state.cart.find((product) => product.id === id);
+                    const alreadyInCart = state.cart.find((cart) => cart.product.id === product.id);
 
-                    if (isPresent) {
+                    if (alreadyInCart) {
                         return {
                             ...state,
                         };
                     }
 
                     const updatedCart = state.cart
-                        .map((product) =>
-                            product.id === id
-                                ? {...product, quantity: Math.max(product.quantity - 1, 0)}
-                                : product,
+                        .map((cart) =>
+                            cart.product.id === product.id
+                                ? {...cart, quantity: Math.max(cart.quantity - 1, 0)}
+                                : cart,
                         )
-                        .filter((product) => product.quantity);
+                        .filter((cart) => cart.quantity);
 
                     return {
                         ...state,
@@ -58,21 +60,9 @@ const useStore = create<CartState>(
                 }),
         })),
         {
-            name: "products",
+            name: "cart",
         },
     ),
 );
 
-export default useStore;
-
-// addProduct: (product) =>
-//                 set((state) => ({
-//                     products: [
-//                         ...state.products,
-//                         {
-//                             product: product,
-//                             quantity: +1,
-//                             size: "S",
-//                         },
-//                     ],
-//                 })),
+export default useCart;
