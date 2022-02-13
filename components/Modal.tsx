@@ -1,33 +1,27 @@
-import {Dispatch, SetStateAction} from "react";
+import {Dispatch, ReactNode, SetStateAction} from "react";
 import {motion} from "framer-motion";
-import Image from "next/image";
-
-import yourcart from "../public/yourcart.svg";
 
 type Props = {
     setModal: Dispatch<SetStateAction<boolean>>;
+    children: ReactNode | undefined;
 };
 
-function Modal({setModal}: Props) {
+function Modal({setModal, children}: Props) {
     return (
         <>
             <motion.div
                 animate={{x: 0, opacity: 1, transition: {bounce: 0}}}
-                className="fixed top-0 right-0 z-30 flex h-[55vw] w-[50vw] flex-col border-l-2 border-b-2 border-white bg-[black] p-8"
+                className="fixed top-0 right-0 z-30 flex h-[38rem] w-[40rem] flex-col gap-3 border-l-2 border-b-2 border-white bg-[black]"
                 exit={{x: 500, opacity: 0, transition: {bounce: 0}}}
                 initial={{x: 150, opacity: 0}}
             >
-                <button className="w-fit self-end text-[2vw]" onClick={() => setModal(false)}>
+                <button
+                    className="w-fit self-end pr-6 pt-6 text-[2vw]"
+                    onClick={() => setModal(false)}
+                >
                     → CLOSE
                 </button>
-                <Image
-                    alt="your cart"
-                    height={20}
-                    layout="responsive"
-                    objectFit="contain"
-                    src={yourcart}
-                    width={100}
-                />
+                {children}
             </motion.div>
             <motion.div
                 animate={{opacity: 1}}

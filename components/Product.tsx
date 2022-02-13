@@ -20,7 +20,7 @@ function ProductItem({product}: Props) {
             <div className="relative mt-10 h-[80vw] max-h-[35rem] cursor-pointer">
                 <div
                     className="flex h-full w-full place-content-center"
-                    onClick={() => addProduct(product.id)}
+                    onClick={() => addProduct(product)}
                     onMouseOut={() => setCartButton(false)}
                 >
                     {cartButton && (

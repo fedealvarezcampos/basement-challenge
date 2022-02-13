@@ -4,12 +4,19 @@ import {motion} from "framer-motion";
 
 import logo from "../public/logo.svg";
 import navicons from "../public/navicons.svg";
+import useCart from "../stores/cart";
 
 type Props = {
     setModal: Dispatch<SetStateAction<boolean>>;
 };
 
 function NavBar({setModal}: Props) {
+    const cart = useCart((state) => state?.cart);
+
+    const quantityInCart = cart
+        .map((product) => product.quantity)
+        .reduce((acc, cur) => acc + cur, 0);
+
     return (
         <motion.nav
             animate={{
@@ -31,10 +38,10 @@ function NavBar({setModal}: Props) {
                 width="260px"
             />
             <button
-                className="h-fit place-self-center rounded-full border-2 border-solid border-white py-2 px-8 pt-2.5 text-xl font-bold"
+                className="h-fit place-self-center rounded-full border-2 border-solid border-white py-2 px-7 pt-2.5 text-xl font-bold hover:bg-[white] hover:text-black"
                 onClick={() => setModal(true)}
             >
-                CART (0)
+                CART ({quantityInCart})
             </button>
         </motion.nav>
     );
