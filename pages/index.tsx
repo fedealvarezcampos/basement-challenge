@@ -1,3 +1,4 @@
+import {Dispatch, SetStateAction} from "react";
 import type {NextPage} from "next";
 import {GetStaticProps} from "next";
 
@@ -16,13 +17,14 @@ export const getStaticProps: GetStaticProps = async () => {
 
 interface Props {
     products: Product[];
+    setModal: Dispatch<SetStateAction<boolean>>;
 }
 
-const Home: NextPage<Props> = ({products}) => {
+const Home: NextPage<Props> = ({products, setModal}) => {
     return (
-        <div className="flex gap-[3%] px-[3%]">
+        <div className="flex flex-col gap-[3%] px-[3%] sm:flex-row">
             {products.map((product) => (
-                <ProductItem key={product?.id} product={product} />
+                <ProductItem key={product?.id} product={product} setModal={setModal} />
             ))}
         </div>
     );

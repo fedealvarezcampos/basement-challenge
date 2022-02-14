@@ -7,6 +7,7 @@ interface CartState {
     cart: {product: Product; quantity: number; size: string}[];
     addProduct: (product: Product) => void;
     removeProduct: (product: Product) => void;
+    setSize: (product: Product, size: string) => void;
 }
 
 const useCart = create<CartState>(
@@ -39,7 +40,7 @@ const useCart = create<CartState>(
                 set((state) => {
                     const alreadyInCart = state.cart.find((cart) => cart.product.id === product.id);
 
-                    if (alreadyInCart) {
+                    if (!alreadyInCart) {
                         return {
                             ...state,
                         };
@@ -52,6 +53,25 @@ const useCart = create<CartState>(
                                 : cart,
                         )
                         .filter((cart) => cart.quantity);
+
+                    return {
+                        ...state,
+                        cart: updatedCart,
+                    };
+                }),
+            setSize: (product, size) =>
+                set((state) => {
+                    const alreadyInCart = state.cart.find((cart) => cart.product.id === product.id);
+
+                    if (!alreadyInCart) {
+                        return {
+                            ...state,
+                        };
+                    }
+
+                    const updatedCart = state.cart.map((cart) =>
+                        cart.product.id === product.id ? {...cart, size: size} : cart,
+                    );
 
                     return {
                         ...state,

@@ -1,26 +1,32 @@
-import {useState} from "react";
+import {Dispatch, SetStateAction, useState} from "react";
 import Image from "next/image";
 import {motion} from "framer-motion";
 
-import useStore from "../stores/cart";
+import useCart from "../stores/cart";
 import {Product} from "../product/types";
 import addToCart from "../public/addtocart.svg";
 
 type Props = {
     product: Product;
+    setModal: Dispatch<SetStateAction<boolean>>;
 };
 
-function ProductItem({product}: Props) {
+function ProductItem({product, setModal}: Props) {
     const [cartButton, setCartButton] = useState(false);
 
-    const addProduct = useStore((state) => state.addProduct);
+    const addProduct = useCart((state) => state.addProduct);
+
+    const handleProduct = (product: Product) => {
+        addProduct(product);
+        setModal(true);
+    };
 
     return (
         <div className="flex flex-1 flex-col">
             <div className="relative mt-10 h-[80vw] max-h-[35rem] cursor-pointer">
                 <div
                     className="flex h-full w-full place-content-center"
-                    onClick={() => addProduct(product)}
+                    onClick={() => handleProduct(product)}
                     onMouseOut={() => setCartButton(false)}
                 >
                     {cartButton && (

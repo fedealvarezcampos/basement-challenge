@@ -30,28 +30,30 @@ a {
 
 ::-webkit-scrollbar {
 	width: 12px;
-
-	@media (max-width: 800px) {
-		width: 0px;
-	}
 }
 
 ::-webkit-scrollbar-track {
 	background: black;
-
-	@media (max-width: 800px) {
-		background: unset;
-	}
 }
 
 ::-webkit-scrollbar-thumb {
 	background-color: white;
-
-	@media (max-width: 800px) {
-		background-color: unset;
-	}
 }
 
 .text-shadow {
   text-shadow: -1px -1px 0 white,-1px 0px 0 white,-1px 1px 0 white,0px -1px 0 white,0px 0px 0 white,0px 1px 0 white,1px -1px 0 white,1px 0px 0 white,1px 1px 0 white;
+}
+
+@media (max-width: 800px) {
+  ::-webkit-scrollbar {
+    width: 0;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: unset;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background-color: unset;
+  }
 }

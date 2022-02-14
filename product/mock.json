@@ -12,8 +12,8 @@
     "id": "black-hoodie",
     "image": "/products/hoodie.png",
     "price": 13,
-    "name": "Darkest hoodie",
-    "description": "Very cool hoodie",
+    "name": "Black hoodie",
+    "description": "Darkest hoodie",
     "options": [{
       "label": "size",
       "values": ["S", "M", "L", "XL"]

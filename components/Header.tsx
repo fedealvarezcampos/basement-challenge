@@ -51,7 +51,7 @@ function Header() {
                             duration: 0.5,
                         },
                     }}
-                    className="px-[3%] pb-10"
+                    className="px-[3%] pb-5 md:pb-10"
                     initial={{opacity: 0}}
                 >
                     <Image
@@ -64,7 +64,7 @@ function Header() {
                 </motion.div>
                 <motion.span
                     animate="asterisk"
-                    className="absolute left-14 bottom-[-20%] z-10 w-[13%] min-w-[5rem] max-w-[15rem] cursor-pointer"
+                    className="absolute bottom-[-12%] left-14 z-10 w-[13%] min-w-[3rem] max-w-[15rem] cursor-pointer sm:bottom-[-20%] sm:min-w-[6rem]"
                     initial={{opacity: 0}}
                     variants={animVariant}
                     whileHover={{rotate: 360, scale: 0.9}}
@@ -80,7 +80,7 @@ function Header() {
                 </motion.span>
                 <motion.span
                     animate="asterisk2"
-                    className="absolute right-14 bottom-2 z-10 w-[13%] min-w-[5rem] max-w-[15rem] cursor-pointer"
+                    className="absolute right-14 bottom-5 z-10 w-[13%] min-w-[3rem] max-w-[15rem] cursor-pointer sm:bottom-2 sm:min-w-[6rem]"
                     initial={{opacity: 0}}
                     variants={animVariant}
                     whileHover={{rotate: -360, scale: 0.9}}
