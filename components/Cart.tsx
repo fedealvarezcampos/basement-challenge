@@ -35,7 +35,7 @@ function Cart() {
                 ))}
             </div>
             <div className="absolute bottom-0 left-0 flex w-full flex-col justify-between bg-black sm:flex-row sm:border-t-[1px] sm:text-2xl">
-                <span className="flex justify-between border-b-[1px] p-6 py-3 pt-4">
+                <span className="flex justify-between gap-4 border-b-[1px] p-6 py-3 pt-4">
                     TOTAL: <span>${totalCartPrice}</span>
                 </span>
                 <button
