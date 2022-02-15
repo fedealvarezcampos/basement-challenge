@@ -15,7 +15,7 @@ function Modal({setModal, children}: Props) {
         <>
             <motion.div
                 animate={{x: 0, opacity: 1, transition: {bounce: 0}}}
-                className="fixed top-0 right-0 z-30 flex h-[38rem] w-[40rem] flex-col gap-2 border-l-2 border-b-2 border-white bg-[black] p-6"
+                className="fixed top-0 right-0 z-30 flex h-full w-full flex-col gap-2 border-white bg-[black] p-4 sm:h-[38rem] sm:w-[40rem] sm:border-l-2 sm:border-b-2 sm:p-6"
                 exit={{x: 500, opacity: 0, transition: {bounce: 0}}}
                 initial={{x: 150, opacity: 0}}
             >

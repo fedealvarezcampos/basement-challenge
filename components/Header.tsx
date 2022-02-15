@@ -51,15 +51,17 @@ function Header() {
                             duration: 0.5,
                         },
                     }}
-                    className="px-[3%] pb-5 md:pb-10"
+                    className="px-[3%] pb-5 md:pb-8"
                     initial={{opacity: 0}}
                 >
                     <Image
                         priority
                         alt="header"
+                        height={28}
                         layout="responsive"
                         objectFit="contain"
                         src={header}
+                        width={100}
                     />
                 </motion.div>
                 <motion.span
@@ -73,9 +75,11 @@ function Header() {
                     <Image
                         alt="design item"
                         draggable={false}
+                        height={100}
                         layout="responsive"
                         objectFit="contain"
                         src={asterisk}
+                        width={100}
                     />
                 </motion.span>
                 <motion.span
@@ -89,9 +93,11 @@ function Header() {
                     <Image
                         alt="design item"
                         draggable={false}
+                        height={100}
                         layout="responsive"
                         objectFit="contain"
                         src={asterisk2}
+                        width={100}
                     />
                 </motion.span>
                 <Marquee />

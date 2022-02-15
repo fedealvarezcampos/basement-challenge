@@ -22,7 +22,7 @@ interface Props {
 
 const Home: NextPage<Props> = ({products, setModal}) => {
     return (
-        <div className="flex flex-col gap-[3%] px-[3%] sm:flex-row">
+        <div className="m-auto flex max-w-[2500px] flex-col gap-[3%] px-[3%] sm:flex-row">
             {products.map((product) => (
                 <ProductItem key={product?.id} product={product} setModal={setModal} />
             ))}

@@ -39,13 +39,15 @@ function Layout({children, setModal, modal}: Props) {
                 )}
                 <main>{children}</main>
                 <footer>
-                    <div className="px-[3%] pb-10">
+                    <div className="px-[3%] pb-4">
                         <Image
                             priority
                             alt="header"
+                            height={36}
                             layout="responsive"
                             objectFit="contain"
                             src={footer}
+                            width={100}
                         />
                     </div>
                 </footer>
