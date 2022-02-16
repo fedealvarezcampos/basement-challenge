@@ -10,7 +10,8 @@ function Cart() {
 
     const totalCartPrice = cart
         .map((item) => item.product.price * item.quantity)
-        .reduce((acc, cur) => acc + cur, 0);
+        .reduce((acc, cur) => acc + cur, 0)
+        .toFixed(2);
 
     return (
         <div className="mb-[9rem] flex flex-col gap-2 overflow-hidden sm:mb-14">

@@ -36,7 +36,7 @@ function NavBar({setModal}: Props) {
                     duration: 0.4,
                 },
             }}
-            className="h-22 sticky top-0 z-20 flex w-full justify-between gap-20 bg-[black] px-[3%]"
+            className="h-22 sticky top-0 z-30 flex w-full justify-between gap-20 bg-[black] px-[3%]"
             initial={{y: -50, opacity: 0}}
         >
             {!mobile ? (
