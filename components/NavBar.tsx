@@ -53,12 +53,14 @@ function NavBar({setModal}: Props) {
                     width="260px"
                 />
             )}
-            <button
-                className="h-fit place-self-center rounded-full border-2 border-solid border-white py-2 px-7 pt-2.5 text-[0.9rem] font-bold hover:bg-[white] hover:text-black sm:text-xl"
-                onClick={() => setModal(true)}
-            >
-                CART ({quantityInCart})
-            </button>
+            <div className="flex w-[11rem] justify-end place-self-center">
+                <button
+                    className="h-fit rounded-full border-2 border-solid border-white py-2 px-7 pt-2.5 text-[0.9rem] font-bold hover:bg-[white] hover:text-black sm:text-xl"
+                    onClick={() => setModal(true)}
+                >
+                    CART ({quantityInCart})
+                </button>
+            </div>
         </motion.nav>
     );
 }
